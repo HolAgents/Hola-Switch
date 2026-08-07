@@ -4,6 +4,14 @@ export { settingsApi } from "./settings";
 export { backupsApi } from "./settings";
 export { mcpApi } from "./mcp";
 export { profilesApi } from "./profiles";
+export { identityApi } from "./identity";
+export type {
+  IdentityInfo,
+  CredentialInfo,
+  StatusRow,
+  AuditRow,
+  AuditFilter,
+} from "./identity";
 export { promptsApi } from "./prompts";
 export { skillsApi } from "./skills";
 export { usageApi } from "./usage";

@@ -714,6 +714,18 @@ pub(crate) fn write_live_with_common_config(
         return Ok(());
     }
 
+    // ★ Identity 管理集成: 合并 identity env vars 到 settings.json
+    // 在写出 live config 前自动注入当前绑定 identity 的 GIT_* env vars
+    if matches!(app_type, AppType::Claude) {
+        if let Err(e) = crate::identity::binder::merge_identity_env(
+            db,
+            "claude-code",
+            &mut effective_provider.settings_config,
+        ) {
+            log::warn!("Failed to merge identity env vars for claude-code: {e}");
+        }
+    }
+
     write_live_snapshot(app_type, &effective_provider)
 }
 

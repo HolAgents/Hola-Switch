@@ -14,6 +14,7 @@ import {
   X,
   Book,
   Brain,
+  Fingerprint,
   Wrench,
   History,
   BarChart2,
@@ -98,6 +99,7 @@ import ToolsPanel from "@/components/openclaw/ToolsPanel";
 import AgentsDefaultsPanel from "@/components/openclaw/AgentsDefaultsPanel";
 import OpenClawHealthBanner from "@/components/openclaw/OpenClawHealthBanner";
 import HermesMemoryPanel from "@/components/hermes/HermesMemoryPanel";
+import IdentityPanel from "@/components/identity/IdentityPanel";
 
 type View =
   | "providers"
@@ -113,7 +115,8 @@ type View =
   | "openclawEnv"
   | "openclawTools"
   | "openclawAgents"
-  | "hermesMemory";
+  | "hermesMemory"
+  | "identity";
 
 interface SyncStatusUpdatedPayload {
   source?: string;
@@ -160,6 +163,7 @@ const VALID_VIEWS: View[] = [
   "openclawTools",
   "openclawAgents",
   "hermesMemory",
+  "identity",
 ];
 
 const getInitialView = (): View => {
@@ -937,6 +941,12 @@ function App() {
           );
         case "hermesMemory":
           return <HermesMemoryPanel />;
+        case "identity":
+          return (
+            <div className="h-full flex flex-col overflow-hidden">
+              <IdentityPanel appId={activeApp} />
+            </div>
+          );
         case "skills":
           return (
             <UnifiedSkillsPanel
@@ -1220,6 +1230,7 @@ function App() {
                   {currentView === "openclawAgents" &&
                     t("openclaw.agents.title")}
                   {currentView === "hermesMemory" && t("hermes.memory.title")}
+                  {currentView === "identity" && t("identity.title")}
                 </h1>
               </div>
             ) : (
@@ -1236,7 +1247,7 @@ function App() {
                         : "text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300",
                     )}
                   >
-                    CC Switch
+                    Hola Switch
                   </a>
                 </div>
                 <Button
@@ -1510,6 +1521,15 @@ function App() {
                               <Button
                                 variant="ghost"
                                 size="sm"
+                                onClick={() => setCurrentView("identity")}
+                                className="text-muted-foreground hover:text-foreground hover:bg-black/5 dark:hover:bg-white/5 w-8 px-2"
+                                title={t("identity.title")}
+                              >
+                                <Fingerprint className="w-4 h-4" />
+                              </Button>
+                              <Button
+                                variant="ghost"
+                                size="sm"
                                 onClick={() => void openHermesWebUI()}
                                 className="text-muted-foreground hover:text-foreground hover:bg-black/5 dark:hover:bg-white/5 w-8 px-2"
                                 title={t("hermes.webui.open")}
@@ -1599,6 +1619,15 @@ function App() {
                                 title={t("prompts.manage")}
                               >
                                 <Book className="w-4 h-4" />
+                              </Button>
+                              <Button
+                                variant="ghost"
+                                size="sm"
+                                onClick={() => setCurrentView("identity")}
+                                className="text-muted-foreground hover:text-foreground hover:bg-black/5 dark:hover:bg-white/5 w-8 px-2"
+                                title={t("identity.title")}
+                              >
+                                <Fingerprint className="w-4 h-4" />
                               </Button>
                               <Button
                                 variant="ghost"

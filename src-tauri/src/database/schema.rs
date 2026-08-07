@@ -511,6 +511,11 @@ impl Database {
                         Self::migrate_v15_to_v16(conn)?;
                         Self::set_user_version(conn, 16)?;
                     }
+                    16 => {
+                        log::info!("迁移数据库从 v16 到 v17（Identity 管理模块）");
+                        crate::identity::schema::migrate_v16_to_v17(conn)?;
+                        Self::set_user_version(conn, 17)?;
+                    }
                     _ => {
                         return Err(AppError::Database(format!(
                             "未知的数据库版本 {version}，无法迁移到 {SCHEMA_VERSION}"

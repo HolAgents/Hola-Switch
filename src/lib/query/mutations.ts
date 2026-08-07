@@ -9,6 +9,7 @@ import { extractErrorMessage } from "@/utils/errorUtils";
 import { generateUUID } from "@/utils/uuid";
 import { openclawKeys } from "@/hooks/useOpenClaw";
 import { invalidateHermesProviderCaches } from "@/hooks/useHermes";
+import { identityKeys } from "@/hooks/useIdentity";
 import { proxyKeys } from "@/lib/query/proxy";
 import { usageKeys } from "@/lib/query/usage";
 import {
@@ -286,6 +287,9 @@ export const useSwitchProviderMutation = (appId: AppId) => {
     },
     onSuccess: async () => {
       await queryClient.invalidateQueries({ queryKey: ["providers", appId] });
+      if (appId === "claude") {
+        await queryClient.invalidateQueries({ queryKey: identityKeys.status });
+      }
       if (appId === "claude-desktop") {
         await queryClient.invalidateQueries({ queryKey: proxyKeys.status });
         await queryClient.invalidateQueries({

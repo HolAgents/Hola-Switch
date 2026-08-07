@@ -16,6 +16,7 @@ mod gemini_config;
 mod gemini_mcp;
 mod grok_config;
 pub mod hermes_config;
+mod identity;
 mod init_status;
 mod lightweight;
 #[cfg(target_os = "linux")]
@@ -1648,6 +1649,17 @@ pub fn run() {
             commands::enter_lightweight_mode,
             commands::exit_lightweight_mode,
             commands::is_lightweight_mode,
+            // Identity management
+            commands::identity_create,
+            commands::identity_show,
+            commands::identity_list,
+            commands::identity_delete,
+            commands::credential_add_github,
+            commands::credential_remove,
+            commands::identity_bind,
+            commands::identity_unbind,
+            commands::identity_status,
+            commands::identity_audit,
         ]);
 
     let app = builder
