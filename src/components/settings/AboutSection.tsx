@@ -3,7 +3,6 @@ import {
   Download,
   Copy,
   ExternalLink,
-  Github,
   Globe,
   Info,
   Loader2,
@@ -884,7 +883,7 @@ export function AboutSection({ isPortable }: AboutSectionProps) {
               }
               className="h-8 gap-1.5 text-xs"
             >
-              <Github className="h-3.5 w-3.5" />
+              <Globe className="h-3.5 w-3.5" />
               {t("settings.github")}
             </Button>
             <Button

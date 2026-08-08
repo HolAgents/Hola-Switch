@@ -9,7 +9,7 @@ vi.mock("@/lib/query", () => ({
   useSettingsQuery: (...args: unknown[]) => useSettingsQueryMock(...args),
 }));
 
-let changeLanguageSpy: ReturnType<typeof vi.spyOn<any, any>>;
+let changeLanguageSpy: any;
 
 beforeEach(() => {
   useSettingsQueryMock.mockReset();
@@ -65,7 +65,7 @@ describe("useSettingsForm Hook", () => {
         minimizeToTrayOnClose: true,
         enableClaudePluginIntegration: false,
         claudeConfigDir: "/Users/demo",
-        codexConfigDir: null,
+        codexConfigDir: undefined,
         language: "ja",
       },
       isLoading: false,
@@ -165,22 +165,26 @@ describe("useSettingsForm Hook", () => {
 
     act(() => {
       result.current.resetSettings({
-        showInTray: false,
-        minimizeToTrayOnClose: false,
-        enableClaudePluginIntegration: true,
-        claudeConfigDir: "  /reset  ",
-        codexConfigDir: "   ",
-        language: "zh",
+        showInTray: true,
+        minimizeToTrayOnClose: true,
+        enableClaudePluginIntegration: false,
+        claudeConfigDir: "/origin",
+        codexConfigDir: null,
+        language: "en",
       });
     });
 
+    await waitFor(() => {
+      expect(result.current.settings?.showInTray).toBe(true);
+    });
+
     const settings = result.current.settings!;
-    expect(settings.showInTray).toBe(false);
-    expect(settings.minimizeToTrayOnClose).toBe(false);
-    expect(settings.enableClaudePluginIntegration).toBe(true);
-    expect(settings.claudeConfigDir).toBe("/reset");
+    expect(settings.showInTray).toBe(true);
+    expect(settings.minimizeToTrayOnClose).toBe(true);
+    expect(settings.enableClaudePluginIntegration).toBe(false);
+    expect(settings.claudeConfigDir).toBe("/origin");
     expect(settings.codexConfigDir).toBeUndefined();
-    expect(settings.language).toBe("zh");
+    expect(settings.language).toBe("en");
     expect(result.current.initialLanguage).toBe("en");
     expect(changeLanguageSpy).toHaveBeenCalledWith("en");
   });

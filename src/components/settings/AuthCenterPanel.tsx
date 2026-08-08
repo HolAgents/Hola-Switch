@@ -1,4 +1,4 @@
-import { Github, ShieldCheck } from "lucide-react";
+import { Globe, ShieldCheck } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { Badge } from "@/components/ui/badge";
 import { CodexIcon } from "@/components/BrandIcons";
@@ -39,7 +39,7 @@ export function AuthCenterPanel() {
       <section className="rounded-xl border border-border/60 bg-card/60 p-6">
         <div className="mb-4 flex items-center gap-3">
           <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-muted">
-            <Github className="h-5 w-5" />
+            <Globe className="h-5 w-5" />
           </div>
           <div>
             <h4 className="font-medium">GitHub Copilot</h4>

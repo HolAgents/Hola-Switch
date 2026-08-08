@@ -34,7 +34,7 @@
     "jsdom": "^30.0.1",
     "msw": "^2.15.0",
     "postcss": "^8.5.25",
-    "prettier": "^3.9.6",
+    "prettier": "^3.6.2",
     "tailwindcss": "^4.3.3",
     "typescript": "^7.0.2",
     "vite": "^8.2.0",
