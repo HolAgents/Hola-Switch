@@ -68,7 +68,7 @@ jobs:
           fi
           if [ -n "$R2_ACCOUNT_ID" ] && [ -n "$AWS_ACCESS_KEY_ID" ] && [ -n "$AWS_SECRET_ACCESS_KEY" ]; then
             echo "configured=true" >> "$GITHUB_OUTPUT"
-          elif [ "$GITHUB_REPOSITORY" = "farion1231/cc-switch" ]; then
+          elif [ "$GITHUB_REPOSITORY" = "HolAgents/Hola-Switch" ]; then
             # A silently stale mirror strands updater users on old versions
             # (the R2 endpoint wins as long as its manifest parses), so the
             # official repo must never skip this sync.
