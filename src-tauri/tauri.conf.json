@@ -60,7 +60,7 @@
       }
     },
     "updater": {
-      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEM4MDI4QzlBNTczOTI4RTMKUldUaktEbFhtb3dDeUM5US9kT0FmdGR5Ti9vQzcwa2dTMlpibDVDUmQ2M0VGTzVOWnd0SGpFVlEK",
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEY1OTk5QzdDNTQwMTA0RDMKUldUVEJBRlVmSnlaOVRzZWJkMWYvM0NZc2VYdTZ4MWFpdmZFdi84eXM0dTZTWWFyTS9VejBQU0EK",
       "endpoints": [
         "https://github.com/HolAgents/Hola-Switch/releases/latest/download/latest.json"
       ]
