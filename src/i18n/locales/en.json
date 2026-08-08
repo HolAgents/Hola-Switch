@@ -3051,7 +3051,7 @@
     "title": "Identities",
     "create": "New Identity",
     "name": "Name",
-    "namePlaceholder": "e.g. holagent001",
+    "namePlaceholder": "e.g. Leonx01",
     "description": "Description",
     "descriptionPlaceholder": "Optional, helps distinguish identities",
     "createSuccess": "Identity created",
